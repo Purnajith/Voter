@@ -6,3 +6,10 @@ services:
     build:
       context: .
       dockerfile: src/Web/Voter.Web/Dockerfile
+
+  voter.services.userapi:
+    image: ${DOCKER_REGISTRY-}voterservicesuserapi
+    build:
+      context: .
+      dockerfile: src/Services/Voter.Services.UserAPI/Dockerfile
+
