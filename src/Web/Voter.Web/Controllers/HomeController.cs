@@ -5,13 +5,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Voter.Web.Models;
+using Voter.Web.Infrastructure.API;
 
 namespace Voter.Web.Controllers
 {
 	public class HomeController : Controller
 	{
-		public IActionResult Index()
+		public async Task<IActionResult> Index()
 		{
+			await this.GetUserID();
 			return View();
 		}
 
@@ -39,5 +41,21 @@ namespace Voter.Web.Controllers
 		{
 			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 		}
+
+
+		#region Methods
+
+		private async Task<int> GetUserID()
+		{
+			int	result = -1;
+
+			var response = await UserAPI.GetUserByName("Yasa");
+
+			result = response.id;
+
+			return result;
+		}
+
+		#endregion
 	}
 }

@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Voter.Web.Infrastructure;
 
 namespace Voter.Web
 {
@@ -29,6 +30,12 @@ namespace Voter.Web
 				// This lambda determines whether user consent for non-essential cookies is needed for a given request.
 				options.CheckConsentNeeded = context => true;
 				options.MinimumSameSitePolicy = SameSiteMode.None;
+			});
+
+			services.Configure<Settings>(
+			options =>
+			{
+				options.UserAPI = Configuration.GetSection("UserAPI").Value;
 			});
 
 
