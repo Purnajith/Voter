@@ -3,9 +3,35 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8CC7B7B0-28DE-401D-870C-B52BB888D0FF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{1DF59DC5-FD79-4A26-936A-72495D26C68A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Voter.Web", "src\Web\Voter.Web\Voter.Web.csproj", "{34B3099E-5755-45AB-83CB-2D36EFF575EE}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{1C65A9AD-DEC5-4339-9027-78F2994834C4}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{34B3099E-5755-45AB-83CB-2D36EFF575EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34B3099E-5755-45AB-83CB-2D36EFF575EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34B3099E-5755-45AB-83CB-2D36EFF575EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34B3099E-5755-45AB-83CB-2D36EFF575EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C65A9AD-DEC5-4339-9027-78F2994834C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C65A9AD-DEC5-4339-9027-78F2994834C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C65A9AD-DEC5-4339-9027-78F2994834C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C65A9AD-DEC5-4339-9027-78F2994834C4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1DF59DC5-FD79-4A26-936A-72495D26C68A} = {8CC7B7B0-28DE-401D-870C-B52BB888D0FF}
+		{34B3099E-5755-45AB-83CB-2D36EFF575EE} = {1DF59DC5-FD79-4A26-936A-72495D26C68A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EB1FF77C-9D4D-4088-906B-C3EA009D7820}

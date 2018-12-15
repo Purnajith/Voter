@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  voter.web:
+    image: ${DOCKER_REGISTRY-}voterweb
+    build:
+      context: .
+      dockerfile: src/Web/Voter.Web/Dockerfile
