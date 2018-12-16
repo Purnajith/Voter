@@ -14,7 +14,8 @@ namespace Voter.Web.Infrastructure.API
 			UserModel					result						= null;
 			HttpClient					httpClient					= new HttpClient();
 			
-			HttpResponseMessage			response					= await httpClient.GetAsync("https://voter.services.userapi/api/user");
+			HttpResponseMessage			response					= await httpClient.GetAsync("https://localhost:44328/api/user");
+			//HttpResponseMessage			response					= await httpClient.GetAsync("https://github.com");
 
 			if(response.IsSuccessStatusCode)
 			{
