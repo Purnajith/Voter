@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name:  vote-webapp
+  labels:
+    name:  vote-webapp
+spec:
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        name:  vote-webapp
+    spec:
+      containers:
+      - image:  purnajith/voterweb
+        name:  vote-webapp       
+        ports:
+        - containerPort:  80

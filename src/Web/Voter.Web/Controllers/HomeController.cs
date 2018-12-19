@@ -25,7 +25,7 @@ namespace Voter.Web.Controllers
 
 		public async Task<IActionResult> Index()
 		{
-			await this.GetUserID();
+			//await this.GetUserID();
 			return View();
 		}
 

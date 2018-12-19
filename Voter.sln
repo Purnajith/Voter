@@ -17,6 +17,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Voter.Services.UserAPI", "s
 EndProject
 Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "AzureResourceGroup1", "..\AzureResourceGroup1\AzureResourceGroup1.deployproj", "{AADEEDC0-ADF6-4D8A-9AE9-6D2F838B75F6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Yml", "Yml", "{BAEE820C-E419-41FE-BDC5-316C6EC431BC}"
+	ProjectSection(SolutionItems) = preProject
+		load-balancer.yml = load-balancer.yml
+		user-api.yml = user-api.yml
+		web-app.yml = web-app.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
