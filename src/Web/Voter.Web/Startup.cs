@@ -32,13 +32,7 @@ namespace Voter.Web
 				options.MinimumSameSitePolicy = SameSiteMode.None;
 			});
 
-			services.Configure<Settings>(
-			options =>
-			{
-				options.UserAPI = Configuration.GetSection("UserAPI").Value;
-			});
-
-
+			services.Configure<AppSettings>(Configuration);
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 		}
 
@@ -55,7 +49,7 @@ namespace Voter.Web
 				app.UseHsts();
 			}
 
-			//app.UseHttpsRedirection();
+			app.UseHttpsRedirection();
 			app.UseStaticFiles();
 			app.UseCookiePolicy();
 			

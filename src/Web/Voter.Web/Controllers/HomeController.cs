@@ -6,11 +6,23 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Voter.Web.Models;
 using Voter.Web.Infrastructure.API;
+using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Hosting;
 
 namespace Voter.Web.Controllers
 {
 	public class HomeController : Controller
 	{
+		private readonly IHostingEnvironment _env;
+        private readonly IOptionsSnapshot<AppSettings> _settings;
+
+		public HomeController(IHostingEnvironment env, IOptionsSnapshot<AppSettings> settings)
+        {
+            _env = env;
+            _settings = settings;
+        }
+
+
 		public async Task<IActionResult> Index()
 		{
 			await this.GetUserID();
@@ -49,9 +61,9 @@ namespace Voter.Web.Controllers
 		{
 			int	result = -1;
 
-			var response = await UserAPI.GetUserByName("Yasa");
+			var response = await UserAPI.GetUserByName(this._settings.Value.API.UserAPI, "Yasa");
 
-			result = response.id;
+			//result = response.id;
 
 			return result;
 		}

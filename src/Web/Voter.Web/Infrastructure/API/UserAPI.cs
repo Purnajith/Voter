@@ -9,24 +9,17 @@ namespace Voter.Web.Infrastructure.API
 {
 	public class UserAPI
 	{
-		public static async Task<UserModel> GetUserByName(string name)
+
+		public static async Task<object> GetUserByName(string baseUrl, string name)
 		{
-			UserModel					result						= null;
+			object					result						= null;
 			HttpClient					httpClient					= new HttpClient();
 			
-			//HttpResponseMessage			response					= await httpClient.GetAsync("http://voter-services-userapi/api/user");
-			HttpResponseMessage			response					= await httpClient.GetAsync("http://host.docker.internal:6708/api/user");
-
-
-			
-			//HttpResponseMessage			response					= await httpClient.GetAsync("https://github.com");
-
+			HttpResponseMessage			response					= await httpClient.GetAsync(baseUrl + "/api/user/");
 			if(response.IsSuccessStatusCode)
 			{
-				result												= await response.Content.ReadAsAsync<UserModel>();
+				result												= await response.Content.ReadAsAsync<object>();
 			}
-
-
 			return  result;
 		}
 	}

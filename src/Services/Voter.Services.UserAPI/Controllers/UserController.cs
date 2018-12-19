@@ -29,10 +29,10 @@ namespace Voter.Services.UserAPI.Controllers
         }
 
         // GET: api/User/5
-        [HttpGet("{id}", Name = "Get")]
-        public async Task<IActionResult> Get(int id)
+        [HttpGet("{name}", Name = "Get")]
+        public async Task<IActionResult> Get(string name)
         {
-			UserModel result = await this._userRepository.Get(id);
+			UserModel result = await this._userRepository.GetByName(name);
 
 			if(result ==  null)
 			{
