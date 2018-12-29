@@ -2,5 +2,26 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    "resourceName": {
+      "value": "cc-test-aks"
+    },
+    "dnsPrefix": {
+      "value": "cc-test-aks"
+    },
+    "servicePrincipalClientId": {
+      "value": null
+    },
+    "servicePrincipalClientSecret": {
+      "value": null
+    },
+    "serviceBusNamespaceName": {
+      "value": "aks-test-service-bus"
+    },
+    "serviceBusQueueName": {
+      "value": "aks-test-service-bus-results"
+    },
+    "databaseAccountName": {
+      "value": "aks-test-mongo"
+    }
   }
 }

@@ -1,0 +1,49 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name:  vote-user-api
+  labels:
+    name:  vote-user-api
+spec:
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        name:  vote-user-api
+    spec:
+      containers:
+      - image:  purnajith/voterservicesuserapi:v1
+        name:  vote-user-api       
+        ports:
+        - containerPort:  80
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name:  vote-user-api-load-balancer
+spec:
+  selector:
+    name:  vote-user-api
+  type:  ClusterIP
+  ports:
+  - port:  80
+    targetPort:  8080
+
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: vote-user-api-autoscaling
+spec:
+  maxReplicas: 4
+  minReplicas: 1
+  targetCPUUtilizationPercentage: 20
+  scaleTargetRef:
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    name: vote-user-api

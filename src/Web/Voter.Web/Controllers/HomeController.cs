@@ -25,13 +25,12 @@ namespace Voter.Web.Controllers
 
 		public async Task<IActionResult> Index()
 		{
-			//await this.GetUserID();
 			return View();
 		}
 
-		public IActionResult About()
+		public async Task<IActionResult> About()
 		{
-			ViewData["Message"] = "Your application description page.";
+			ViewData["Message"] = await this.GetUserID();
 
 			return View();
 		}
@@ -57,15 +56,9 @@ namespace Voter.Web.Controllers
 
 		#region Methods
 
-		private async Task<int> GetUserID()
+		private async Task<object> GetUserID()
 		{
-			int	result = -1;
-
-			var response = await UserAPI.GetUserByName(this._settings.Value.API.UserAPI, "Yasa");
-
-			//result = response.id;
-
-			return result;
+			return await UserAPI.GetUserByName(this._settings.Value.API.UserAPI, "Yasa"); ;
 		}
 
 		#endregion
