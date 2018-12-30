@@ -6,12 +6,12 @@ services:
     build:
       context: .
       dockerfile: src/Web/Voter.Web/Dockerfile
-    container_name: voter-web
+    container_name: vote-webapp
       
   voter.services.userapi:
     image: ${DOCKER_REGISTRY-}voterservicesuserapi
     build:
       context: .
       dockerfile: src/Services/Voter.Services.UserAPI/Dockerfile
-    container_name: voter-services-userapi
+    container_name: vote-user-api
 

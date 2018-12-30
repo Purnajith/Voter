@@ -16,7 +16,7 @@ spec:
         name:  vote-user-api
     spec:
       containers:
-      - image:  purnajith/voterservicesuserapi:v1
+      - image:  purnajith/voterservicesuserapi:v1.1
         name:  vote-user-api       
         ports:
         - containerPort:  80
@@ -25,20 +25,19 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name:  vote-user-api-load-balancer
+  name:  vote-user-api
 spec:
   selector:
     name:  vote-user-api
   type:  ClusterIP
   ports:
   - port:  80
-    targetPort:  8080
 
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: vote-user-api-autoscaling
+  name: vote-user-api
 spec:
   maxReplicas: 4
   minReplicas: 1

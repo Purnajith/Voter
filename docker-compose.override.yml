@@ -6,17 +6,9 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "6526:80"
-      - "44349:443"
-    volumes:
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
-      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
 
   voter.services.userapi:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "6708:80"
-      - "44328:443"
-    volumes:
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
-      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro

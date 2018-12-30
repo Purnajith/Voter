@@ -3,25 +3,25 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "resourceName": {
-      "value": "cc-test-aks"
+      "value": "cc-deployment-test-v3-aks"
     },
     "dnsPrefix": {
-      "value": "cc-test-aks"
+      "value": "cc-deployment-test-v3-aks-dns"
     },
     "servicePrincipalClientId": {
-      "value": "07dd4997-c30c-4c54-b704-2afc7200ac40"
+      "value": "80a20eff-9516-4f35-86af-912d9b8577fb"
     },
     "servicePrincipalClientSecret": {
-      "value": "84fb090a-4436-4056-8957-7927be56e3e1"
+      "value": "37a6d6b9-6634-4cff-a2e9-fc90cc5f86f5"
     },
     "serviceBusNamespaceName": {
-      "value": "aks-test-service-bus"
+      "value": "cc-deployment-test-v3-service-bus"
     },
     "serviceBusQueueName": {
-      "value": "aks-test-service-bus-results"
+      "value": "cc-deployment-test-v3-service-bus-results"
     },
     "databaseAccountName": {
-      "value": "aks-test-mongo"
+      "value": "cc-deployment-test-v3-mongo"
     }
   }
 }

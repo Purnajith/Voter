@@ -16,7 +16,7 @@ spec:
         name:  vote-webapp
     spec:
       containers:
-      - image:  purnajith/voterweb:v1
+      - image:  purnajith/voterweb:v1.5
         name:  vote-webapp       
         ports:
         - containerPort:  80
@@ -25,20 +25,19 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name:  vote-webapp-load-balancer
+  name:  vote-webapp
 spec:
   selector:
     name:  vote-webapp
   type:  LoadBalancer
   ports:
   - port:  80
-    targetPort: 8080
 
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: vote-webapp-autoscaling
+  name: vote-webapp
 spec:
   maxReplicas: 4
   minReplicas: 1
