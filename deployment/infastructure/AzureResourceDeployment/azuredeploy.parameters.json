@@ -9,10 +9,10 @@
       "value": "cc-test-aks"
     },
     "servicePrincipalClientId": {
-      "value": null
+      "value": "07dd4997-c30c-4c54-b704-2afc7200ac40"
     },
     "servicePrincipalClientSecret": {
-      "value": null
+      "value": "84fb090a-4436-4056-8957-7927be56e3e1"
     },
     "serviceBusNamespaceName": {
       "value": "aks-test-service-bus"
