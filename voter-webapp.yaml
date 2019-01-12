@@ -10,6 +10,7 @@ spec:
       maxSurge: 2
       maxUnavailable: 1
     type: RollingUpdate
+  minReadySeconds: 5 
   template:
     metadata:
       labels:
@@ -20,6 +21,14 @@ spec:
         name:  vote-webapp       
         ports:
         - containerPort:  80
+        resources:
+          requests:
+            cpu: 250m
+            memory: 256Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+
 
 ---
 kind: Service
@@ -41,7 +50,7 @@ metadata:
 spec:
   maxReplicas: 4
   minReplicas: 1
-  targetCPUUtilizationPercentage: 3
+  targetCPUUtilizationPercentage: 8
   scaleTargetRef:
     apiVersion: extensions/v1beta1
     kind: Deployment
