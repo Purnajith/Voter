@@ -19,15 +19,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deployment", "deployment", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infastructure", "infastructure", "{6859388A-0125-4A20-BCB1-36E89AE9FD3A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Publish", "Publish", "{5E47CF4F-2FB5-4DCA-AD90-6CD08045A283}"
-	ProjectSection(SolutionItems) = preProject
-		deployment\publish\voter-user-api.yaml = deployment\publish\voter-user-api.yaml
-		voter-webapp.yaml = voter-webapp.yaml
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Voter.Services.UserAPI.Test", "src\Services\Voter.Services.UserAPI.Test\Voter.Services.UserAPI.Test.csproj", "{F862B56C-ABE9-4A26-9D73-44C3AFCA9701}"
 EndProject
 Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "AzureResourceGroupDeployment", "deployment\infastructure\AzureResourceGroupDeployment\AzureResourceGroupDeployment.deployproj", "{4E7864DD-429D-4D68-B9A1-3AEAE2ACFBFB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "yml", "yml", "{4AC886FF-41B9-4E89-A94C-F0BE7172AA35}"
+	ProjectSection(SolutionItems) = preProject
+		deployment\yml\voter-user-api.yaml = deployment\yml\voter-user-api.yaml
+		deployment\yml\voter-web.yaml = deployment\yml\voter-web.yaml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,9 +65,9 @@ Global
 		{7FD9A6A3-4DBF-445D-B046-E28BB655080F} = {8CC7B7B0-28DE-401D-870C-B52BB888D0FF}
 		{5067CE82-9490-47C6-A5F1-0E840AD06ADA} = {7FD9A6A3-4DBF-445D-B046-E28BB655080F}
 		{6859388A-0125-4A20-BCB1-36E89AE9FD3A} = {1EB4502F-23FE-415F-BEB3-002EF6FCA649}
-		{5E47CF4F-2FB5-4DCA-AD90-6CD08045A283} = {1EB4502F-23FE-415F-BEB3-002EF6FCA649}
 		{F862B56C-ABE9-4A26-9D73-44C3AFCA9701} = {7FD9A6A3-4DBF-445D-B046-E28BB655080F}
 		{4E7864DD-429D-4D68-B9A1-3AEAE2ACFBFB} = {6859388A-0125-4A20-BCB1-36E89AE9FD3A}
+		{4AC886FF-41B9-4E89-A94C-F0BE7172AA35} = {1EB4502F-23FE-415F-BEB3-002EF6FCA649}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EB1FF77C-9D4D-4088-906B-C3EA009D7820}
