@@ -11,11 +11,11 @@ namespace Voter.Services.UserAPI.Infrastructure.Context
 	public class UsersContext : IUsersContext
 	{
 		private readonly IMongoDatabase _db;
-		public UsersContext(IOptions<Settings> options)
+		public UsersContext(IOptions<AppSettings> options)
 		{
-			var client = new MongoClient(options.Value.ConnectionString);
-			_db = client.GetDatabase(options.Value.Database);
+			var client = new MongoClient(options.Value.MongoDB.ConnectionString);
+			_db = client.GetDatabase(options.Value.MongoDB.Database);
 		}
-		public IMongoCollection<UserModel> Users => _db.GetCollection<UserModel>("Users");
+		public IMongoCollection<UserModel> User => _db.GetCollection<UserModel>("User");
 	}
 }

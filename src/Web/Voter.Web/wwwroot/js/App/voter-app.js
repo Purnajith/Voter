@@ -1,0 +1,1 @@
+﻿var voter = angular.module('voteApp', []);

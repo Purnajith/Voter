@@ -1,16 +1,12 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
-for details on configuring this project to bundle and minify static web assets. */
-body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿* {
+    margin: 0;
+    padding: 0;
 }
 
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+body {
+    font-family: Arial, Helvetica, sans-serif;
 }
+
 
 /* Carousel */
 .carousel-caption p {
@@ -23,11 +19,6 @@ body {
     width: 100%;
 }
 
-/* QR code generator */
-#qrCode {
-    margin: 15px;
-}
-
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
     /* Hide captions */
@@ -35,3 +26,114 @@ body {
         display: none;
     }
 }
+
+
+main {
+    display: block;
+    text-align: center;
+    width: 40rem; /* This line can be removed */
+    margin: 0 auto; /* This line can be removed */
+}
+
+h3 {
+    padding: 2rem 0 1rem;
+    border-bottom: 1px solid #ccc;
+    font-size: 2.2rem;
+    line-height: 2.2rem;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    margin-top: 2rem;
+}
+
+    ul li {
+        padding: 2rem;
+        margin-bottom: .5rem;
+        font-size: 1.6rem;
+        line-height: 2rem;
+        border-radius: .4rem;
+        cursor: pointer;
+        position: relative;
+        color: #393a3d;
+        border: 1px solid #8d9096;
+    }
+
+        ul li:hover {
+            background-color: #eee;
+            box-shadow: 0 0 0 1px #8d9096;
+        }
+
+        ul li.vote-done:hover {
+            background-color: transparent;
+            box-shadow: none;
+        }
+
+        ul li label {
+            z-index: 1;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display: block;
+            width: 100%;
+            font-size: 1.4rem;
+            line-height: 1.4rem;
+            font-weight: bold;
+        }
+
+        ul li label,
+        ul li .progress {
+            position: absolute;
+            cursor: pointer;
+        }
+
+        ul li .progress {
+            background-color: #eee;
+            height: calc(100% - .2rem);
+            left: .1rem;
+            top: .1rem;
+            z-index: 0;
+            width: 0;
+            border-radius: .3rem 0 0 .3rem;
+        }
+
+        ul li.vote-done,
+        ul li.vote-done label,
+        ul li.vote-done .progress {
+            cursor: not-allowed;
+        }
+
+            ul li.vote-done .progress {
+                transition: width 1s ease;
+            }
+
+                ul li.vote-done .progress.pro-100 {
+                    width: 99.5%;
+                    border-radius: .3rem;
+                }
+
+                ul li.vote-done .progress.pro-90 {
+                    width: 90%;
+                }
+
+                ul li.vote-done .progress.pro-55 {
+                    width: 55%;
+                }
+
+                ul li.vote-done .progress.pro-78 {
+                    width: 78%;
+                }
+
+            ul li.vote-done.good .progress {
+                background-color: #2ca01c;
+            }
+
+            ul li.vote-done.average .progress {
+                background-color: #F2B835;
+            }
+
+            ul li.vote-done.bad .progress {
+                background-color: #fd4c4c;
+            }

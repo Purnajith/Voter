@@ -8,13 +8,21 @@ using Voter.Web.Models;
 using Voter.Web.Infrastructure.API;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Hosting;
+using Voter.Web.Common;
+using Voter.Web.Infrastructure.API.Models;
 
 namespace Voter.Web.Controllers
 {
 	public class HomeController : Controller
 	{
-		private readonly IHostingEnvironment _env;
-        private readonly IOptionsSnapshot<AppSettings> _settings;
+		#region Members
+
+		private readonly IHostingEnvironment				_env;
+        private readonly IOptionsSnapshot<AppSettings>		_settings;
+
+		#endregion
+
+		#region Constructor
 
 		public HomeController(IHostingEnvironment env, IOptionsSnapshot<AppSettings> settings)
         {
@@ -22,30 +30,42 @@ namespace Voter.Web.Controllers
             _settings = settings;
         }
 
+		#endregion
 
+		#region Action Methods
+
+		/// <summary>
+		/// Home Page
+		/// </summary>
+		/// <returns></returns>
 		public async Task<IActionResult> Index()
 		{
+			ViewBag.UserEmail				= this.GetUserEmail().Result;
+
 			return View();
 		}
 
-		public async Task<IActionResult> About()
+
+		/// <summary>
+		/// Create a new user for the given information
+		/// </summary>
+		/// <param name="userModel"></param>
+		/// <returns></returns>
+		[HttpPost]
+		public async Task<IActionResult> CreatUser([FromBody] UserModel userModel)
 		{
-			ViewData["Message"] = await this.GetUserID();
+			if(userModel.IsValid())
+			{
+				// add to the db
+				UserAPI.CreateUser(this._settings.Value.API.UserAPI, userModel);
 
-			return View();
+				// set the cookie
+				CookieUtility.SetEmail(this.HttpContext, userModel.Email);
+			}
+
+			return Json(userModel);
 		}
 
-		public IActionResult Contact()
-		{
-			ViewData["Message"] = "Your contact page.";
-
-			return View();
-		}
-
-		public IActionResult Privacy()
-		{
-			return View();
-		}
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 		public IActionResult Error()
@@ -53,12 +73,32 @@ namespace Voter.Web.Controllers
 			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 		}
 
+		#endregion
 
-		#region Methods
 
-		private async Task<object> GetUserID()
+		#region Helpers
+
+		/// <summary>
+		/// Gets if the user is in the cookie and is in the db 
+		/// </summary>
+		/// <returns></returns>
+		private async Task<string> GetUserEmail()
 		{
-			return await UserAPI.GetUserByName(this._settings.Value.API.UserAPI, "Yasa"); ;
+			// check if the cookie exists and whats the email in the cookie 
+			string				result				= CookieUtility.GetEmail(this.HttpContext);
+
+			if(!String.IsNullOrEmpty(result))
+			{
+				UserModel		user				= await UserAPI.GetUserByEmail(this._settings.Value.API.UserAPI, result);
+
+				// if the user dosnt exists we set the result as empy as the cookie user is not a valid user
+				if(user == null)
+				{
+					result							= String.Empty;
+				}
+			}
+
+			return result;
 		}
 
 		#endregion

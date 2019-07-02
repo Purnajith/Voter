@@ -1,4 +1,16 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿(function () {
+    angular.module('intuitHomeApp')
+        .constant('settings', {
 
-// Write your JavaScript code.
+        });
+});
+
+
+
+$(function () {
+    $('ul li').click(function () {
+        $(this).addClass('vote-done good');
+        $(this).find('.progress').addClass('pro-90');
+    });
+
+});

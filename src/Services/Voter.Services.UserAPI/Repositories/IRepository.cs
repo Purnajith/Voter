@@ -8,10 +8,13 @@ namespace Voter.Services.UserAPI.Repositories
 	public interface IRepository <T>
 	{
 		Task<IEnumerable<T>> GetAll();
-		Task<T> Get(int ID);
-		Task<T> GetByName(string name);
+
+		Task<T> GetByEmail(string email);
+
 		Task Create(T t);
+
 		Task<bool> Update(T game);
-		Task<bool> Delete(int ID);
+
+		Task<bool> Delete(string email);
 	}
 }

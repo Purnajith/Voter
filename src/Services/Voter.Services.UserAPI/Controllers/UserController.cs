@@ -13,13 +13,13 @@ namespace Voter.Services.UserAPI.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+		
         private readonly IRepository<UserModel> _userRepository;
 
 		public UserController (IRepository<UserModel> repository)
 		{
 			this._userRepository = repository;
 		}
-
 
 		// GET: api/User
         [HttpGet]
@@ -28,25 +28,11 @@ namespace Voter.Services.UserAPI.Controllers
             return await this._userRepository.GetAll();
         }
 
-        // GET: api/User/5
-        [HttpGet("{name}", Name = "Get")]
-        public async Task<IActionResult> Get(string name)
-        {
-			UserModel result = await this._userRepository.GetByName(name);
-
-			if(result ==  null)
-			{
-				return new NotFoundResult();
-			}
-
-            return new ObjectResult(result);
-        }
-
 		// GET: api/User/5
-        [HttpGet("{name}", Name = "GetByName")]
-        public async Task<IActionResult> GetByName(string name)
+        [HttpGet("{email}", Name = "GetByEmail")]
+        public async Task<IActionResult> GetByEmail(string email)
         {
-			UserModel result = await this._userRepository.GetByName(name);
+			UserModel result = await this._userRepository.GetByEmail(email);
 
 			if(result ==  null)
 			{
@@ -64,18 +50,18 @@ namespace Voter.Services.UserAPI.Controllers
 			return new OkObjectResult(user);
         }
 
-        // PUT: api/User/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] UserModel user)
+        // PUT: api/User/{email}
+        [HttpPut("{email}")]
+        public async Task<IActionResult> Put(string email, [FromBody] UserModel user)
         {
-			UserModel currentUser = await this._userRepository.Get(id);
+			UserModel				currentUser					= await this._userRepository.GetByEmail(email);
 
 			if(currentUser == null)
 			{
 				return new NotFoundResult();
 			}
 
-			user.id	= currentUser.id;
+			user._id											= currentUser._id;
 
 			await this._userRepository.Update(user);
 
@@ -84,16 +70,16 @@ namespace Voter.Services.UserAPI.Controllers
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(string email)
         {
-			UserModel user = await this._userRepository.Get(id);
+			UserModel user = await this._userRepository.GetByEmail(email);
 
 			if(user == null)
 			{
 				return new NotFoundResult();
 			}
 
-			await this._userRepository.Delete(id);
+			await this._userRepository.Delete(email);
 
 			return new OkResult();
         }

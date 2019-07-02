@@ -29,6 +29,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "yml", "yml", "{4AC886FF-41B
 		deployment\yml\voter-web.yaml = deployment\yml\voter-web.yaml
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Voter.Services.VoteAPI", "src\Services\Voter.Services.VoteAPI\Voter.Services.VoteAPI.csproj", "{D84EE0AF-BFD2-494B-9561-15198E6D7E45}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{4E7864DD-429D-4D68-B9A1-3AEAE2ACFBFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E7864DD-429D-4D68-B9A1-3AEAE2ACFBFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E7864DD-429D-4D68-B9A1-3AEAE2ACFBFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D84EE0AF-BFD2-494B-9561-15198E6D7E45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D84EE0AF-BFD2-494B-9561-15198E6D7E45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D84EE0AF-BFD2-494B-9561-15198E6D7E45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D84EE0AF-BFD2-494B-9561-15198E6D7E45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,6 +74,7 @@ Global
 		{F862B56C-ABE9-4A26-9D73-44C3AFCA9701} = {7FD9A6A3-4DBF-445D-B046-E28BB655080F}
 		{4E7864DD-429D-4D68-B9A1-3AEAE2ACFBFB} = {6859388A-0125-4A20-BCB1-36E89AE9FD3A}
 		{4AC886FF-41B9-4E89-A94C-F0BE7172AA35} = {1EB4502F-23FE-415F-BEB3-002EF6FCA649}
+		{D84EE0AF-BFD2-494B-9561-15198E6D7E45} = {7FD9A6A3-4DBF-445D-B046-E28BB655080F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EB1FF77C-9D4D-4088-906B-C3EA009D7820}

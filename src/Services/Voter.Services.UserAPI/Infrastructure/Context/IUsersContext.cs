@@ -9,6 +9,6 @@ namespace Voter.Services.UserAPI.Infrastructure.Context
 {
 	public interface IUsersContext
 	{
-		IMongoCollection<UserModel> Users { get; }
+		IMongoCollection<UserModel> User { get; }
 	}
 }

@@ -7,7 +7,19 @@ namespace Voter.Web.Infrastructure.API.Models
 {
 	public class UserModel
 	{
-		public int id { get; set; }
-		public string Name { get; set; }
+		public string Email { get; set; }
+
+		public string FirstName { get; set; }
+
+		public string LastName { get; set; }
+
+		/// <summary>
+		/// Check if the model is valid
+		/// </summary>
+		/// <returns></returns>
+		internal bool IsValid()
+		{
+			return !String.IsNullOrEmpty(this.Email) && !String.IsNullOrEmpty(this.FirstName) && !String.IsNullOrEmpty(this.LastName);
+		}
 	}
 }
